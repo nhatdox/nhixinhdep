@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="NHAT DO app icon">
+  <defs>
+    <linearGradient id="bg" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#ff7dab"/>
+      <stop offset="100%" stop-color="#5d8cf8"/>
+    </linearGradient>
+    <linearGradient id="heart" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#ffe7f0"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="132" fill="url(#bg)"/>
+  <circle cx="105" cy="104" r="46" fill="#ffffff" opacity="0.13"/>
+  <circle cx="398" cy="112" r="26" fill="#ffffff" opacity="0.2"/>
+  <path
+    d="M256 222c-22-39-78-51-111-15-31 34-23 91 16 125l95 83 95-83c39-34 47-91 16-125-33-36-89-24-111 15z"
+    fill="url(#heart)"
+  />
+  <text
+    x="256"
+    y="182"
+    text-anchor="middle"
+    fill="#ffffff"
+    font-family="Be Vietnam Pro, Arial, sans-serif"
+    font-size="92"
+    font-weight="800"
+    letter-spacing="6"
+  >ND</text>
+</svg>

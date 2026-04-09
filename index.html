@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#e84f86">
+    <meta name="description" content="Trang web tình yêu lãng mạn với nhiều tương tác hiện đại dành riêng cho người thương">
+    <title>NHAT DO | Dành Cho Em</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;800&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/icons/app-icon.svg" type="image/svg+xml">
+    <link rel="manifest" href="manifest.webmanifest?v=20260405">
+    <link rel="stylesheet" href="assets/css/style.css?v=20260405">
+</head>
+<body>
+    <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+    <header class="site-header">
+        <div class="container nav-shell">
+            <a class="brand" href="#home">
+                <img class="brand-logo" src="assets/images/logo-nhatdo.jfif" alt="Logo NHATDO" onerror="this.onerror=null;this.src='assets/icons/app-icon.svg';">
+                <span>NHAT DO</span>
+            </a>
+            <button class="menu-toggle" type="button" aria-label="Mở menu" aria-controls="site-nav" aria-expanded="false">Menu</button>
+            <nav class="site-nav" id="site-nav" aria-label="Điều hướng chính">
+                <a href="#home" class="active">Trang đầu</a>
+                <a href="#story">Chuyện mình</a>
+                <a href="#vibe">Vibe</a>
+                <a href="#memories">Kỷ niệm</a>
+                <a href="#letter">Lá thư</a>
+                <a href="#guestbook">Sổ lưu bút</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="ambient-glow" aria-hidden="true"></div>
+            <div class="container hero-grid">
+                <article class="hero-copy reveal">
+                    <p class="eyebrow">Dành Riêng Cho Em</p>
+                    <h1 class="hero-title hero-title-single-line">Lê Nhi❤️</h1>
+                    <p class="lead">Anh biết mình may mắn vì có em trong cuộc đời. Mỗi ngày ở cạnh em đều là một ngày đẹp hơn hôm qua, và giờ anh biến trang này thành một góc nhỏ hiện đại hơn để giữ lại thật nhiều điều thương.</p>
+
+                    <div class="hero-mini-grid" aria-label="Thông tin nhanh">
+                        <div class="mini-card">
+                            <span>Lời chào hôm nay</span>
+                            <strong id="greeting-chip">Đang chuẩn bị lời chào...</strong>
+                        </div>
+                        <div class="mini-card">
+                            <span>Đồng hồ hiện tại</span>
+                            <strong id="live-clock">--:--</strong>
+                        </div>
+                        <div class="mini-card">
+                            <span>Số lần ghé thăm</span>
+                            <strong id="visit-count">0 lần</strong>
+                        </div>
+                    </div>
+
+                    <div class="hero-actions">
+                        <a class="btn-primary" href="#letter">Đọc lời tỏ tình</a>
+                        <button class="btn-ghost" type="button" id="heart-burst-btn">Thả tim</button>
+                        <button class="btn-ghost" type="button" id="theme-toggle" aria-pressed="false">Bật chế độ đêm</button>
+                        <button class="btn-ghost" type="button" id="open-gift">Mở hộp quà</button>
+                        <button class="btn-ghost" type="button" id="share-love">Chia sẻ trang</button>
+                        <button class="btn-ghost is-control-hidden" type="button" id="install-app">Cài như app</button>
+                    </div>
+                </article>
+
+                <aside class="love-counter reveal" id="love-counter" data-start-date="2026-02-18">
+                    <p class="counter-label">Chúng ta đã bên nhau</p>
+                    <h2><span id="days">0</span> ngày</h2>
+                    <small id="countdown-note">Mỗi ngày có em đều là một điều thật đẹp.</small>
+                    <div class="counter-divider"></div>
+                    <p class="counter-label">Mốc tiếp theo</p>
+                    <strong id="next-anniversary">Đang tính cột mốc tiếp theo...</strong>
+                    <div class="counter-stats">
+                        <div class="counter-pill">
+                            <span>Chuỗi yêu thương</span>
+                            <strong id="streak-count">0 tuần</strong>
+                        </div>
+                        <div class="counter-pill">
+                            <span>Trạng thái kết nối</span>
+                            <strong id="network-status">Đang online</strong>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <section class="section" id="story" data-nav-group="story">
+            <div class="container">
+                <p class="eyebrow">Chuyện Tình</p>
+                <h2 class="section-title">Câu chuyện của chúng ta</h2>
+                <div class="timeline">
+                    <article class="timeline-item reveal">
+                        <time>Ngày 18/02/2026</time>
+                        <h3>Bắt đầu yêu thương</h3>
+                        <p>Từ ngày đó, anh biết mình muốn đi cùng em qua thật nhiều mùa trong cuộc đời.</p>
+                    </article>
+                    <article class="timeline-item reveal">
+                        <time>Những ngày đầu</time>
+                        <h3>Tin nhắn đến tận khuya</h3>
+                        <p>Mỗi cuộc trò chuyện khiến hai đứa gần nhau hơn một chút, và thương nhau hơn một chút.</p>
+                    </article>
+                    <article class="timeline-item reveal">
+                        <time>Khi gặp nhau</time>
+                        <h3>Thêm một lần nhớ em</h3>
+                        <p>Mọi khoảnh khắc ở cạnh em đều khiến anh muốn giữ lại thật lâu.</p>
+                    </article>
+                    <article class="timeline-item reveal">
+                        <time>Hôm nay</time>
+                        <h3>Vẫn chỉ là em</h3>
+                        <p>Anh chọn yêu em bằng sự tử tế, kiên nhẫn và chân thành mỗi ngày.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section soft" id="journey" data-nav-group="story">
+            <div class="container">
+                <p class="eyebrow">Khoảnh Khắc Nổi Bật</p>
+                <h2 class="section-title">Timeline tương tác của hai chúng ta</h2>
+                <div class="journey-panel reveal">
+                    <label for="journey-range">Kéo để xem từng cột mốc</label>
+                    <input id="journey-range" type="range" min="1" max="6" value="1" step="1">
+                    <div class="journey-output">
+                        <h3 id="journey-title">Lần đầu mình nói chuyện thật lâu</h3>
+                        <p id="journey-desc">Một buổi tối rất bình thường, nhưng với anh lại là mở đầu của một điều rất đặc biệt.</p>
+                        <small id="journey-date">Mốc 1 / 6</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="vibe">
+            <div class="container">
+                <p class="eyebrow">Không Gian Tương Tác</p>
+                <h2 class="section-title">Một góc nhỏ hiện đại dành cho hai đứa</h2>
+                <div class="vibe-grid">
+                    <article class="mood-board reveal" id="mood-board">
+                        <div class="panel-head">
+                            <div>
+                                <p class="eyebrow">Mood Board</p>
+                                <h3>Chọn vibe cho hôm nay</h3>
+                            </div>
+                            <span class="inline-badge" id="mood-badge">Vibe dịu dàng</span>
+                        </div>
+                        <div class="mood-chips" id="mood-options">
+                            <button class="mood-chip active" type="button" data-mood="sweet">Dịu dàng</button>
+                            <button class="mood-chip" type="button" data-mood="dreamy">Mơ mộng</button>
+                            <button class="mood-chip" type="button" data-mood="playful">Tinh nghịch</button>
+                            <button class="mood-chip" type="button" data-mood="missing">Nhớ em</button>
+                        </div>
+                        <div class="mood-result" id="mood-result">
+                            <strong id="mood-title">Một ngày thật nhẹ nhàng</strong>
+                            <p id="mood-desc">Nếu hôm nay muốn bình yên, trang này sẽ dịu lại như một lá thư nhỏ và nhắc rằng mình vẫn đang có nhau.</p>
+                            <small id="mood-tip">Gợi ý nhỏ: thử bấm "Thả tim" rồi kéo xuống album để mở từng kỷ niệm lớn hơn.</small>
+                        </div>
+                    </article>
+
+                    <article class="dream-board reveal">
+                        <div class="panel-head">
+                            <div>
+                                <p class="eyebrow">Bucket List</p>
+                                <h3>Checklist hẹn hò mini</h3>
+                            </div>
+                            <span class="inline-badge" id="dream-progress">0/4 hoàn thành</span>
+                        </div>
+                        <ul class="dream-list" id="dream-list">
+                            <li class="dream-item" data-key="sunset">
+                                <button class="dream-toggle" type="button">
+                                    <span>Xem hoàng hôn cùng nhau</span>
+                                    <strong>Chạm để đánh dấu</strong>
+                                </button>
+                            </li>
+                            <li class="dream-item" data-key="late-talk">
+                                <button class="dream-toggle" type="button">
+                                    <span>Nói chuyện tới khuya thêm một lần nữa</span>
+                                    <strong>Chạm để đánh dấu</strong>
+                                </button>
+                            </li>
+                            <li class="dream-item" data-key="photo-date">
+                                <button class="dream-toggle" type="button">
+                                    <span>Chụp thêm một bộ ảnh thật xinh</span>
+                                    <strong>Chạm để đánh dấu</strong>
+                                </button>
+                            </li>
+                            <li class="dream-item" data-key="long-drive">
+                                <button class="dream-toggle" type="button">
+                                    <span>Cùng nhau đi một chuyến thật xa</span>
+                                    <strong>Chạm để đánh dấu</strong>
+                                </button>
+                            </li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="memories">
+            <div class="container">
+                <p class="eyebrow">Kỷ Niệm Ngọt Ngào</p>
+                <h2 class="section-title">Album dành riêng cho em</h2>
+                <p class="section-desc">Bấm vào từng tấm để mở rộng như lightbox. Bạn vẫn có thể thay ảnh thật của hai bạn bằng cách sửa class `photo-*` trong CSS.</p>
+                <div class="gallery">
+                    <figure class="polaroid reveal gallery-item" tabindex="0" role="button" aria-label="Mở ảnh Lần hẹn đầu tiên" data-photo-class="photo-1" data-caption="Lần hẹn đầu tiên" data-detail="Nếu được tua chậm lại một khoảnh khắc, anh sẽ chọn ngày mình bắt đầu ở cạnh nhau thật nhiều hơn.">
+                        <div class="photo photo-1"></div>
+                        <figcaption>Lần hẹn đầu tiên</figcaption>
+                    </figure>
+                    <figure class="polaroid reveal gallery-item" tabindex="0" role="button" aria-label="Mở ảnh Buổi đi chơi xa đầu tiên" data-photo-class="photo-2" data-caption="Buổi đi chơi xa đầu tiên" data-detail="Một hành trình nhỏ nhưng đủ để biến bình thường thành điều đáng nhớ rất lâu.">
+                        <div class="photo photo-2"></div>
+                        <figcaption>Buổi đi chơi xa đầu tiên</figcaption>
+                    </figure>
+                    <figure class="polaroid reveal gallery-item" tabindex="0" role="button" aria-label="Mở ảnh Sinh nhật của em" data-photo-class="photo-3" data-caption="Sinh nhật của em" data-detail="Ngày đặc biệt của em luôn là ngày anh muốn chuẩn bị thật chỉn chu để em thấy mình được thương rất nhiều.">
+                        <div class="photo photo-3"></div>
+                        <figcaption>Sinh nhật của em</figcaption>
+                    </figure>
+                    <figure class="polaroid reveal gallery-item" tabindex="0" role="button" aria-label="Mở ảnh Một ngày bình yên cùng nhau" data-photo-class="photo-4" data-caption="Một ngày bình yên cùng nhau" data-detail="Không cần gì quá lớn, đôi khi chỉ cần ở gần nhau là cả ngày đã trở nên đẹp rồi.">
+                        <div class="photo photo-4"></div>
+                        <figcaption>Một ngày bình yên cùng nhau</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <section class="section soft" id="letter">
+            <div class="container letter-grid">
+                <article class="quote-box reveal">
+                    <p class="eyebrow">Lời Ngọt Ngào</p>
+                    <h2 class="section-title">Một câu dành riêng cho em</h2>
+                    <p class="quote-text" id="love-quote-text">Yêu em là quyết định nhẹ nhàng nhất mà anh từng làm trong đời.</p>
+                    <button class="btn-primary" type="button" id="new-quote">Đổi câu khác</button>
+                </article>
+
+                <article class="letter-box reveal">
+                    <p class="eyebrow">Lời Nhắn Riêng</p>
+                    <h2 class="section-title">Lá thư gửi em</h2>
+                    <p id="love-letter" class="letter-text is-hidden" data-full-text="Cảm ơn em đã xuất hiện trong cuộc đời anh. Anh không hứa sẽ hoàn hảo, nhưng anh hứa sẽ luôn cố gắng để yêu em tốt hơn mỗi ngày. Dù mai sau có ra sao, điều anh muốn vẫn là nắm tay em thật chặt."></p>
+                    <button class="btn-primary" id="toggle-letter" type="button">Mở lá thư</button>
+                </article>
+            </div>
+        </section>
+
+        <section class="section" id="guestbook">
+            <div class="container">
+                <p class="eyebrow">Sổ Lưu Bút</p>
+                <h2 class="section-title">Lưu lại những lời nhắn yêu thương</h2>
+                <div class="guestbook-grid">
+                    <form id="guestbook-form" class="guestbook-form reveal" novalidate>
+                        <label for="message">Lời nhắn hôm nay</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Ví dụ: Hôm nay anh nhớ em thật nhiều..." required></textarea>
+                        <div class="form-actions">
+                            <button type="submit" class="btn-primary">Lưu trên trình duyệt</button>
+                            <button type="button" class="btn-ghost" id="copy-note-line">Sao chép JSON</button>
+                            <button type="button" class="btn-ghost" id="reload-notes">Tải lại từ file</button>
+                        </div>
+                        <small id="form-status" role="status" aria-live="polite">Ghi chú có thể lưu trực tiếp trên trình duyệt và vẫn đọc thêm từ file assets/data/notes.json.</small>
+                    </form>
+                    <div class="notes-panel reveal">
+                        <div class="panel-head">
+                            <div>
+                                <p class="eyebrow">Notes Feed</p>
+                                <h3>Những lời đã lưu</h3>
+                            </div>
+                            <span class="inline-badge" id="notes-count">0 lời nhắn</span>
+                        </div>
+                        <div class="notes-filters">
+                            <button class="filter-chip active" type="button" data-filter="all">Tất cả</button>
+                            <button class="filter-chip" type="button" data-filter="file">Từ file</button>
+                            <button class="filter-chip" type="button" data-filter="local">Trên máy này</button>
+                        </div>
+                        <ul id="notes-list"></ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; <span id="year"></span> NHAT DO. Viết bằng tất cả yêu thương.</p>
+        </div>
+    </footer>
+
+    <nav class="mobile-dock" aria-label="Điều hướng nhanh trên điện thoại">
+        <a href="#home">Trang đầu</a>
+        <a href="#story">Chuyện mình</a>
+        <a href="#vibe">Vibe</a>
+        <a href="#memories">Album</a>
+        <a href="#letter">Lá thư</a>
+        <a href="#guestbook">Lưu bút</a>
+    </nav>
+
+    <div class="gift-modal" id="gift-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Hộp quà bí mật">
+        <div class="gift-dialog">
+            <button class="modal-close" id="close-gift" type="button" aria-label="Đóng">×</button>
+            <p class="eyebrow">Hộp Quà Bí Mật</p>
+            <h3>Điều anh muốn nói với em</h3>
+            <p>Dù cuộc sống có bận rộn, anh vẫn muốn mỗi ngày đều dành thời gian để thương em nhiều hơn hôm qua.</p>
+        </div>
+    </div>
+
+    <div class="lightbox-modal" id="gallery-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Xem ảnh kỷ niệm">
+        <div class="lightbox-dialog">
+            <button class="modal-close" id="close-gallery" type="button" aria-label="Đóng ảnh">×</button>
+            <button class="lightbox-nav" id="gallery-prev" type="button" aria-label="Ảnh trước">‹</button>
+            <div class="lightbox-stage">
+                <div class="lightbox-photo photo" id="gallery-photo"></div>
+                <div class="lightbox-copy">
+                    <p class="eyebrow">Khoảnh Khắc Được Mở Rộng</p>
+                    <h3 id="gallery-title">Lần hẹn đầu tiên</h3>
+                    <p id="gallery-detail">Một khoảnh khắc nhỏ nhưng rất đáng nhớ.</p>
+                </div>
+            </div>
+            <button class="lightbox-nav" id="gallery-next" type="button" aria-label="Ảnh tiếp theo">›</button>
+        </div>
+    </div>
+
+    <div id="heart-layer" aria-hidden="true"></div>
+
+    <script src="assets/js/main.js?v=20260405"></script>
+</body>
+</html>

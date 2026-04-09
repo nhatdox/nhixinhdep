@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NHAT DO | Liên Hệ</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a class="brand" href="../index.html">NHAT DO</a>
+            <button class="menu-toggle" type="button" aria-label="Mở menu">Menu</button>
+            <nav class="site-nav" aria-label="Điều hướng chính">
+                <a href="../index.html">Trang chủ</a>
+                <a href="about.html">Giới thiệu</a>
+                <a href="services.html">Dịch vụ</a>
+                <a href="contact.html" class="active">Liên hệ</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="content">
+        <section class="container contact-layout">
+            <article class="contact-panel card">
+                <p class="eyebrow">Liên hệ với chúng tôi</p>
+                <h1>Gửi yêu cầu tư vấn</h1>
+                <p>Điền form bên cạnh, đội ngũ NHAT DO sẽ phản hồi cho bạn trong vòng 24 giờ làm việc.</p>
+                <ul class="contact-list">
+                    <li><strong>Email:</strong> hello@studionova.vn</li>
+                    <li><strong>Điện thoại:</strong> +84 123 456 789</li>
+                    <li><strong>Địa chỉ:</strong> 123 Đường ABC, Quận 1, TP.HCM</li>
+                    <li><strong>Giờ làm việc:</strong> Thứ 2 - Thứ 7, 8:30 - 18:00</li>
+                </ul>
+            </article>
+
+            <article class="card form-card">
+                <form class="contact-form" action="#" method="post">
+                    <div class="form-row">
+                        <label for="name">Họ và tên</label>
+                        <input id="name" name="name" type="text" placeholder="Nguyễn Văn A" required>
+                    </div>
+
+                    <div class="form-row split">
+                        <div>
+                            <label for="email">Email</label>
+                            <input id="email" name="email" type="email" placeholder="ban@example.com" required>
+                        </div>
+                        <div>
+                            <label for="phone">Số điện thoại</label>
+                            <input id="phone" name="phone" type="tel" placeholder="+84 9xx xxx xxx" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="service">Bạn quan tâm dịch vụ nào?</label>
+                        <select id="service" name="service" required>
+                            <option value="" selected disabled>Chọn một dịch vụ</option>
+                            <option value="landing-page">Thiết kế landing page</option>
+                            <option value="company-website">Website doanh nghiệp</option>
+                            <option value="maintenance">Bảo trì và nâng cấp</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="message">Nội dung cần tư vấn</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Mô tả ngắn về nhu cầu của bạn..." required></textarea>
+                    </div>
+
+                    <button class="btn-primary" type="submit">Gửi liên hệ</button>
+                </form>
+            </article>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; <span id="year"></span> NHAT DO. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>
+

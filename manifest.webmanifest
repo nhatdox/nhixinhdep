@@ -1,0 +1,19 @@
+{
+  "name": "NHAT DO | Dành Cho Em",
+  "short_name": "NHAT DO",
+  "description": "Trang web tình yêu lãng mạn có thể cài như một ứng dụng nhỏ.",
+  "lang": "vi",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fff7fb",
+  "theme_color": "#e84f86",
+  "icons": [
+    {
+      "src": "assets/icons/app-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
