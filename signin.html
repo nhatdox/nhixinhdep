@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#e84f86">
+    <meta name="description" content="Lớp đăng nhập nhẹ để mở trang riêng tư của NHAT DO.">
+    <title>Sign In | NHAT DO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;800&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/icons/app-icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="assets/css/style.css?v=20260410b">
+    <script src="assets/js/auth.js?v=20260410b"></script>
+    <script>
+        if (window.NhatDoAuth) {
+            window.NhatDoAuth.redirectIfAuthenticated("index.html");
+        }
+    </script>
+</head>
+<body class="auth-screen">
+    <main class="auth-page">
+        <section class="auth-shell">
+            <article class="auth-copy">
+                <h1 class="auth-title">Chạm nhẹ trước cửa rồi mình mới vào bên trong.</h1>
+            </article>
+
+            <form id="signin-form" class="auth-card" novalidate>
+                <p class="eyebrow">Sign In</p>
+                <h2 class="auth-card-title">Nhập thông tin để mở</h2>
+
+                <label for="signin-username">Tài khoản</label>
+                <input id="signin-username" name="username" type="text" autocomplete="username" placeholder="Nhập tài khoản">
+
+                <label for="signin-password">Mật khẩu</label>
+                <input id="signin-password" name="password" type="password" autocomplete="current-password" placeholder="Nhập mật khẩu">
+
+                <label class="auth-remember" for="signin-remember">
+                    <input id="signin-remember" name="remember" type="checkbox">
+                    <span>Ghi nhớ trên thiết bị này</span>
+                </label>
+
+                <button class="btn-primary auth-submit" id="signin-submit" type="submit">Mở khóa trang</button>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        if (window.NhatDoAuth) {
+            window.NhatDoAuth.mountSignInForm({ successPath: "index.html" });
+        }
+    </script>
+</body>
+</html>

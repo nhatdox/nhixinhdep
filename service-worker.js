@@ -1,12 +1,15 @@
-const APP_VERSION = "20260405";
+const APP_VERSION = "20260410b";
 const CACHE_NAME = `nhatdo-love-${APP_VERSION}`;
 const CORE_ASSETS = [
     "./",
     "./index.html",
+    "./signin.html",
     "./manifest.webmanifest",
     `./manifest.webmanifest?v=${APP_VERSION}`,
     "./assets/css/style.css",
     `./assets/css/style.css?v=${APP_VERSION}`,
+    "./assets/js/auth.js",
+    `./assets/js/auth.js?v=${APP_VERSION}`,
     "./assets/js/main.js",
     `./assets/js/main.js?v=${APP_VERSION}`,
     "./assets/data/notes.json",

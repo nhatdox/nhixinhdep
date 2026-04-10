@@ -10,8 +10,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;800&family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="icon" href="assets/icons/app-icon.svg" type="image/svg+xml">
-    <link rel="manifest" href="manifest.webmanifest?v=20260405">
-    <link rel="stylesheet" href="assets/css/style.css?v=20260405">
+    <link rel="manifest" href="manifest.webmanifest?v=20260410b">
+    <link rel="stylesheet" href="assets/css/style.css?v=20260410b">
+    <script src="assets/js/auth.js?v=20260410b"></script>
+    <script>
+        if (!window.NhatDoAuth) {
+            window.location.replace("signin.html");
+        } else {
+            window.NhatDoAuth.requireAccess("signin.html");
+        }
+    </script>
 </head>
 <body>
     <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
@@ -64,6 +72,7 @@
                         <button class="btn-ghost" type="button" id="theme-toggle" aria-pressed="false">Bật chế độ đêm</button>
                         <button class="btn-ghost" type="button" id="open-gift">Mở hộp quà</button>
                         <button class="btn-ghost" type="button" id="share-love">Chia sẻ trang</button>
+                        <button class="btn-ghost" type="button" data-sign-out>Đăng xuất</button>
                         <button class="btn-ghost is-control-hidden" type="button" id="install-app">Cài như app</button>
                     </div>
                 </article>
@@ -320,6 +329,6 @@
 
     <div id="heart-layer" aria-hidden="true"></div>
 
-    <script src="assets/js/main.js?v=20260405"></script>
+    <script src="assets/js/main.js?v=20260410b"></script>
 </body>
 </html>

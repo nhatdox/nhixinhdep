@@ -19,6 +19,10 @@
         }
     };
 
+    if (window.NhatDoAuth?.bindSignOut) {
+        window.NhatDoAuth.bindSignOut({ redirectPath: "signin.html" });
+    }
+
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const isReducedMotion = () => prefersReducedMotion.matches;
     const formatDateTime = new Intl.DateTimeFormat("vi-VN", {
@@ -731,7 +735,7 @@
     });
 
     if ("serviceWorker" in navigator && /^https?:$/.test(window.location.protocol)) {
-        const swVersion = "20260405";
+        const swVersion = "20260410b";
         const swClientVersionKey = "nhatdo-sw-client-version";
         let hasRefreshedForNewWorker = false;
 
