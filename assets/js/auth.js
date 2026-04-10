@@ -4,7 +4,7 @@
     // Lightweight client-side gate for static hosting.
     // Add or edit accounts here using normal text.
     const LIGHTWEIGHT_CREDENTIALS = [
-        { username: "nhatdo", password: "nhixinhdep" }
+        { username: "lethiyennhi", password: "10082006" }
     ];
 
     const normalizeUsername = (value) => value.trim().toLowerCase();
