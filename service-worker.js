@@ -1,4 +1,4 @@
-const APP_VERSION = "20260410b";
+const APP_VERSION = "20260412b";
 const CACHE_NAME = `nhatdo-love-${APP_VERSION}`;
 const CORE_ASSETS = [
     "./",

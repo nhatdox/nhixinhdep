@@ -16,6 +16,13 @@
             } catch {
                 // Ignore storage failures and keep the UI usable.
             }
+        },
+        remove(key) {
+            try {
+                window.localStorage.removeItem(key);
+            } catch {
+                // Ignore storage failures and keep the UI usable.
+            }
         }
     };
 
@@ -64,6 +71,21 @@
 
     const buildJsonSnippet = (value) => {
         return `    ${JSON.stringify(value)},`;
+    };
+
+    const getNextRandomIndex = (length, currentIndex = -1) => {
+        if (length <= 1) return 0;
+        let nextIndex = Math.floor(Math.random() * length);
+        if (nextIndex === currentIndex) {
+            nextIndex = (nextIndex + 1) % length;
+        }
+        return nextIndex;
+    };
+
+    const shortenText = (text, maxLength = 54) => {
+        const normalizedText = `${text || ""}`.trim().replace(/\s+/g, " ");
+        if (normalizedText.length <= maxLength) return normalizedText;
+        return `${normalizedText.slice(0, Math.max(0, maxLength - 1)).trim()}…`;
     };
 
     const yearEl = q("#year");
@@ -200,6 +222,27 @@
             applyTheme(nextMode);
             storage.set(themeKey, nextMode);
         });
+    }
+
+    if (window.matchMedia("(pointer: fine)").matches && !isReducedMotion()) {
+        let pointerRaf = 0;
+        let nextPointerX = window.innerWidth * 0.18;
+        let nextPointerY = window.innerHeight * 0.12;
+
+        const commitPointerGlow = () => {
+            pointerRaf = 0;
+            document.body.style.setProperty("--pointer-x", `${nextPointerX}px`);
+            document.body.style.setProperty("--pointer-y", `${nextPointerY}px`);
+        };
+
+        commitPointerGlow();
+
+        window.addEventListener("pointermove", (event) => {
+            nextPointerX = event.clientX;
+            nextPointerY = event.clientY;
+            if (pointerRaf) return;
+            pointerRaf = window.requestAnimationFrame(commitPointerGlow);
+        }, { passive: true });
     }
 
     const greetingEl = q("#greeting-chip");
@@ -360,34 +403,55 @@
     const moodTitle = q("#mood-title");
     const moodDesc = q("#mood-desc");
     const moodTip = q("#mood-tip");
+    const sceneChip = q("#scene-chip");
+    const sceneLabel = q("#scene-label");
+    const sceneCaption = q("#scene-caption");
+    const sceneEnergy = q("#scene-energy");
+    const scenePaletteName = q("#scene-palette-name");
     const moodData = {
         sweet: {
             label: "Vibe dịu dàng",
             title: "Một ngày thật nhẹ nhàng",
             desc: "Nếu hôm nay muốn bình yên, trang này sẽ dịu lại như một lá thư nhỏ và nhắc rằng mình vẫn đang có nhau.",
             tip: "Gợi ý nhỏ: thử bấm \"Thả tim\" rồi kéo xuống album để mở từng kỷ niệm lớn hơn.",
-            color: "#e84f86"
+            color: "#e84f86",
+            chip: "Đang tỏa sáng",
+            energy: "Nhịp nền êm",
+            palette: "Rose glow",
+            heroText: "Một nhịp nền êm và sạch để từng lời nhắn nhìn dịu hơn."
         },
         dreamy: {
             label: "Vibe mơ mộng",
             title: "Một chút thơ, một chút mộng",
             desc: "Có những ngày chỉ muốn nghĩ về tương lai thật đẹp, nơi hai đứa đi qua nhiều thành phố và vẫn nắm tay nhau.",
             tip: "Gợi ý nhỏ: checklist bên cạnh hợp nhất cho những kế hoạch mình muốn thực hiện cùng nhau.",
-            color: "#7f6dff"
+            color: "#7f6dff",
+            chip: "Mơ màng nhẹ",
+            energy: "Ánh sáng bay",
+            palette: "Cloud bloom",
+            heroText: "Nền trang chuyển sang cảm giác nhẹ, sáng và hơi mơ như một lời hẹn."
         },
         playful: {
             label: "Vibe tinh nghịch",
             title: "Ngày vui thì nên đáng yêu hơn",
             desc: "Hôm nay có thể hơi nghịch một chút, thêm chút màu, thêm chút tim bay, thêm vài câu trêu em cho cả ngày bớt nhạt.",
             tip: "Gợi ý nhỏ: bấm đổi câu ngọt ngào vài lần để xem web trả lời em kiểu khác nhau.",
-            color: "#ff9f55"
+            color: "#ff9f55",
+            chip: "Năng lượng cao",
+            energy: "Gam màu vui",
+            palette: "Sun candy",
+            heroText: "Màu nền tươi hơn, nhịp nhìn nhanh hơn và các điểm nhấn nổi rực hơn."
         },
         missing: {
             label: "Vibe nhớ em",
             title: "Nhớ một người là khi điều gì cũng dẫn về người đó",
             desc: "Những ngày bận rộn nhất đôi khi lại là lúc anh nhớ em nhiều nhất, chỉ muốn mở một góc nhỏ có tên em để thấy gần hơn.",
             tip: "Gợi ý nhỏ: lưu một lời nhắn mới trong sổ lưu bút để mai đọc lại vẫn thấy ấm.",
-            color: "#5d8cf8"
+            color: "#5d8cf8",
+            chip: "Nhớ em nhiều",
+            energy: "Sâu và ấm",
+            palette: "Blue echo",
+            heroText: "Không gian cảm xúc trầm hơn một chút, đủ để tạo cảm giác gần và riêng."
         }
     };
 
@@ -402,6 +466,12 @@
         if (moodDesc) moodDesc.textContent = mood.desc;
         if (moodTip) moodTip.textContent = mood.tip;
         if (moodResult) moodResult.style.setProperty("--mood-accent", mood.color);
+        if (sceneChip) sceneChip.textContent = mood.chip;
+        if (sceneLabel) sceneLabel.textContent = mood.label;
+        if (sceneCaption) sceneCaption.textContent = mood.heroText;
+        if (sceneEnergy) sceneEnergy.textContent = mood.energy;
+        if (scenePaletteName) scenePaletteName.textContent = mood.palette;
+        document.body.dataset.scene = moodKey;
 
         storage.set(moodStorageKey, moodKey);
     };
@@ -468,6 +538,8 @@
 
     const quoteText = q("#love-quote-text");
     const newQuoteBtn = q("#new-quote");
+    const sceneQuotePeek = q("#scene-quote-peek");
+    const shuffleExperienceBtn = q("#shuffle-experience");
     const quotes = [
         "Yêu em là quyết định nhẹ nhàng nhất mà anh từng làm trong đời.",
         "Giữa rất nhiều điều tốt đẹp, em vẫn là điều đẹp nhất với anh.",
@@ -480,18 +552,24 @@
     const setQuote = (index) => {
         if (!quoteText) return;
         quoteText.textContent = quotes[index];
+        if (sceneQuotePeek) {
+            sceneQuotePeek.textContent = shortenText(quotes[index], 42);
+        }
         currentQuote = index;
+    };
+
+    const pickRandomQuote = () => {
+        const next = getNextRandomIndex(quotes.length, currentQuote);
+        setQuote(next);
     };
 
     if (newQuoteBtn) {
         newQuoteBtn.addEventListener("click", () => {
-            let next = Math.floor(Math.random() * quotes.length);
-            if (next === currentQuote) {
-                next = (next + 1) % quotes.length;
-            }
-            setQuote(next);
+            pickRandomQuote();
         });
     }
+
+    setQuote(currentQuote);
 
     const toggleLetterBtn = q("#toggle-letter");
     const letterEl = q("#love-letter");
@@ -608,7 +686,23 @@
     const closeGalleryBtn = q("#close-gallery");
     const galleryPrevBtn = q("#gallery-prev");
     const galleryNextBtn = q("#gallery-next");
+    const memorySpotlightTitle = q("#memory-spotlight-title");
+    const memorySpotlightDetail = q("#memory-spotlight-detail");
     let activeGalleryIndex = 0;
+    let spotlightIndex = 0;
+
+    const memorySpotlights = galleryItems.map((item) => ({
+        caption: item.dataset.caption || "Một khoảnh khắc ngọt ngào",
+        detail: item.dataset.detail || "Một khoảnh khắc nhỏ nhưng rất đáng nhớ."
+    }));
+
+    const updateMemorySpotlight = (index) => {
+        if (!memorySpotlights.length) return;
+        spotlightIndex = (index + memorySpotlights.length) % memorySpotlights.length;
+        const spotlight = memorySpotlights[spotlightIndex];
+        if (memorySpotlightTitle) memorySpotlightTitle.textContent = spotlight.caption;
+        if (memorySpotlightDetail) memorySpotlightDetail.textContent = spotlight.detail;
+    };
 
     const openGallery = (index) => {
         if (!galleryModal || !galleryPhoto || !galleryTitle || !galleryDetail || !galleryItems.length) return;
@@ -621,6 +715,7 @@
         galleryPhoto.className = `lightbox-photo photo ${photoClass}`;
         galleryTitle.textContent = caption;
         galleryDetail.textContent = detail;
+        updateMemorySpotlight(activeGalleryIndex);
         galleryModal.classList.add("open");
         galleryModal.setAttribute("aria-hidden", "false");
         syncBodyLock();
@@ -646,6 +741,29 @@
             }
         });
     });
+
+    if (memorySpotlights.length) {
+        updateMemorySpotlight(0);
+        if (!isReducedMotion()) {
+            window.setInterval(() => {
+                updateMemorySpotlight(spotlightIndex + 1);
+            }, 4800);
+        }
+    }
+
+    if (shuffleExperienceBtn) {
+        shuffleExperienceBtn.addEventListener("click", () => {
+            const nextMoodIndex = getNextRandomIndex(moodButtons.length, moodButtons.findIndex((button) => button.classList.contains("active")));
+            const nextMoodKey = moodButtons[nextMoodIndex]?.dataset.mood || "sweet";
+            applyMood(nextMoodKey);
+            pickRandomQuote();
+            if (memorySpotlights.length) {
+                updateMemorySpotlight(spotlightIndex + 1);
+            }
+            spawnHeartBurst(14);
+            flashButtonLabel(shuffleExperienceBtn, "Đã làm mới");
+        });
+    }
 
     if (closeGalleryBtn) {
         closeGalleryBtn.addEventListener("click", closeGallery);
@@ -735,7 +853,7 @@
     });
 
     if ("serviceWorker" in navigator && /^https?:$/.test(window.location.protocol)) {
-        const swVersion = "20260410b";
+        const swVersion = "20260412b";
         const swClientVersionKey = "nhatdo-sw-client-version";
         let hasRefreshedForNewWorker = false;
 
@@ -804,12 +922,59 @@
     const copyNoteLineBtn = q("#copy-note-line");
     const notesCountEl = q("#notes-count");
     const noteFilterButtons = qa(".filter-chip");
+    const messageCounter = q("#message-counter");
+    const draftStatus = q("#draft-status");
+    const messagePreview = q("#message-preview");
+    const messagePreviewText = q("#message-preview-text");
     const notesFilePath = "assets/data/notes.json";
     const localNotesKey = "nhatdo-local-notes";
+    const noteDraftKey = "nhatdo-note-draft";
     const isFileProtocol = window.location.protocol === "file:";
+    const messageMaxLength = messageInput?.maxLength && messageInput.maxLength > 0 ? messageInput.maxLength : 220;
     let currentNotesFilter = "all";
     let fileNotes = [];
     let localNotes = [];
+
+    const updateMessageComposer = () => {
+        const rawValue = messageInput?.value || "";
+        const trimmedValue = rawValue.trim();
+        const currentLength = rawValue.length;
+        const remaining = Math.max(0, messageMaxLength - currentLength);
+
+        if (messageCounter) {
+            messageCounter.textContent = `${currentLength}/${messageMaxLength} ký tự`;
+            messageCounter.classList.toggle("is-warning", remaining <= 20);
+        }
+
+        if (messageInput) {
+            messageInput.classList.toggle("is-near-limit", remaining <= 20 && currentLength > 0);
+        }
+
+        if (messagePreviewText) {
+            messagePreviewText.textContent = trimmedValue || "Khi bạn bắt đầu gõ, lời nhắn sẽ hiện nhẹ ở đây để bạn căn lại cảm xúc trước khi lưu.";
+        }
+
+        if (messagePreview) {
+            messagePreview.classList.toggle("is-active", Boolean(trimmedValue));
+        }
+
+        if (draftStatus) {
+            draftStatus.textContent = trimmedValue
+                ? "Nháp đang được lưu tự động trên máy này."
+                : "Nháp sẽ tự lưu trên máy này trong lúc bạn gõ.";
+        }
+    };
+
+    const persistMessageDraft = () => {
+        if (!messageInput) return;
+        const draftValue = messageInput.value;
+        if (draftValue.trim()) {
+            storage.set(noteDraftKey, draftValue);
+        } else {
+            storage.remove(noteDraftKey);
+        }
+        updateMessageComposer();
+    };
 
     const readLocalNotes = () => {
         try {
@@ -946,6 +1111,15 @@
         }
     };
 
+    if (messageInput) {
+        const savedDraft = storage.get(noteDraftKey, "");
+        if (savedDraft) {
+            messageInput.value = savedDraft;
+        }
+        messageInput.addEventListener("input", persistMessageDraft);
+        updateMessageComposer();
+    }
+
     localNotes = readLocalNotes();
     renderNotes();
     if (isFileProtocol && formStatus) {
@@ -1007,6 +1181,8 @@
             setNotesFilter("all");
             renderNotes();
             messageInput.value = "";
+            storage.remove(noteDraftKey);
+            updateMessageComposer();
             spawnHeartBurst(12);
 
             if (formStatus) {
